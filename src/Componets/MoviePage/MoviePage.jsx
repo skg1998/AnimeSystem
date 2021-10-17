@@ -7,8 +7,9 @@ class MoviePage extends Component {
     state = { 
         videoObject:{},
      }
+     
      async componentDidMount(){
-  
+         
      }
   
     render() {
@@ -19,10 +20,10 @@ class MoviePage extends Component {
               autoplay: 1,
             },
           };
-          console.log("checking: ",this.props.location.state); 
+        console.log("Anime id", this.props.location.state); 
         return (
             
-             <p>Hello</p>
+             <h1>Hello</h1>
             // <div className="movie-page">
             //     <div className="movie-page-poster">
             //         <img src={poster_path} alt="" />
