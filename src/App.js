@@ -9,25 +9,22 @@ import { API_KEY, API_LINK } from './API/secrets';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 class App extends Component {
   state = {
-    animeData:[]
+    animeData: []
   }
-  async componentDidMount() { 
+  async componentDidMount() {
     let data2 = await axios.get(`https://api.aniapi.com/v1/anime?genres=Ninja`)
-  
-    let animeData=data2.data.data.documents;
 
-    // console.log("front") 
-    // console.log(animeData);
+    let animeData = data2.data.data.documents;
 
     this.setState({
-      animeData:animeData
+      animeData: animeData
     });
 
   }
   setMovies = async (newMovieName) => {
-   let data2=await axios.get(`https://api.aniapi.com/v1/anime?genres=${newMovieName}`);
-   
-    let animeData=data2.data.data.documents;
+    let data2 = await axios.get(`https://api.aniapi.com/v1/anime?genres=${newMovieName}`);
+
+    let animeData = data2.data.data.documents;
 
     this.setState({
       animeData: animeData
@@ -44,15 +41,14 @@ class App extends Component {
               {this.state.animeData.length ?
                 (<React.Fragment>
                   <Movies movies={this.state.animeData}></Movies>
-                  
                 </React.Fragment>
                 ) : (
                   <h1>Loading...</h1>
                 )
               }
             </Route>
-            </Switch>
-       
+            <Route path="/moviepage" exact component={MoviePage}></Route>
+          </Switch>
         </div>
       </Router>
     );
